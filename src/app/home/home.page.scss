@@ -8,6 +8,10 @@
   transform: translateY(-50%);
 }
 
+.start-scroll {
+  scroll-behavior: auto;
+}
+
 .productOfTheDay {
   display: flex;
   justify-content: center;

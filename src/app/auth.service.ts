@@ -8,29 +8,49 @@ export class AuthService {
   private users = [
     {
       email: 'customer@gmail.com',
-      password: 'password'
+      password: 'password',
+      accountType: 'Customer'
     },
     {
       email: 'seller@gmail.com',
-      password: 'password'
+      password: 'password',
+      accountType: 'Seller'
     }
   ];
 
-  constructor() { }
+  loggedInUser: any = null;
 
-  login(email: string, password: string): string {
-    if (this.users.some(user => user.email === email && user.password === password)) {
-      return 'success';
-    } else {
-      return 'Invalid email or password';
+  constructor() { }
+  
+  setAccountType(type: string) {
+    if (this.loggedInUser) {
+      this.loggedInUser.accountType = type;
     }
   }
+
+  getUserDetails(): Promise<any> {
+    return Promise.resolve(this.loggedInUser);
+  }
+
+  login(email: string, password: string): Promise<string> {
+    return new Promise((resolve) => {
+      if (this.users.some(user => user.email === email && user.password === password)) {
+        this.loggedInUser = this.users.find(user => user.email === email);
+        resolve('success');
+      } else {
+        resolve('Invalid email or password');
+      }
+    });
+  }
+
   
-  signup(email: string, password: string): string {
+  signup(email: string, password: string, accountType: string): string {
     if (this.users.some(user => user.email === email)) {
       return 'Email already in use';
     } else {
-      this.users.push({ email, password });
+      const newUser = { email, password, accountType };
+      this.users.push(newUser);
+      this.loggedInUser = newUser;
       return 'success';
     }
   }

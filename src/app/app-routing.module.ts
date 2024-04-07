@@ -4,6 +4,10 @@ import { CartPage } from './cart/cart.page';
 
 const routes: Routes = [
   {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -17,10 +21,6 @@ const routes: Routes = [
     loadChildren: () => import('./product-detail/product-detail.module').then( m => m.ProductDetailPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartPage
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
 ];
 

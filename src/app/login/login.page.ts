@@ -14,12 +14,13 @@ export class LoginPage {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  login() {
-    const result = this.authService.login(this.email, this.password);
+  async login() {
+    const result = await this.authService.login(this.email, this.password);
     if (result === 'success') {
       this.router.navigateByUrl('/home');
     } else {
       this.errorMessage = result;
     }
   }
+
 }

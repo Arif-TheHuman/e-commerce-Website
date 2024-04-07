@@ -4,19 +4,22 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
-<ion-content>
   <form (ngSubmit)="signup()" style="padding: 20px;">
     <ion-item>
       <ion-label>Email</ion-label>
-      <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
+      <ion-input type="email" [formControl]="email" name="email" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+      <ion-input type="password" [formControl]="password" name="password" required></ion-input>
     </ion-item>
-    <ion-button expand="full" type="submit">Sign in</ion-button>
+    <ion-button expand="full" type="submit" [disabled]="!email.valid || !password.valid">Sign in</ion-button>
   </form>
+  <div *ngIf="showAccountTypeButtons" style="padding: 20px;">
+    <ion-label>Choose your account type</ion-label>
+    <ion-button expand="full" (click)="setAccountType('Seller')">Seller</ion-button>
+    <ion-button expand="full" (click)="setAccountType('Customer')">Customer</ion-button>
+  </div>
   <p *ngIf="errorMessage" style="color: red; text-align: center;">{{errorMessage}}</p>
   <p style="text-align: center;">Already have an account? <a routerLink="/login">Login</a></p>
 </ion-content>
