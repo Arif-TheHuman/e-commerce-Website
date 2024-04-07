@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Sign in</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+<ion-content>
+  <form (ngSubmit)="signup()" style="padding: 20px;">
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit">Sign in</ion-button>
+  </form>
+  <p *ngIf="errorMessage" style="color: red; text-align: center;">{{errorMessage}}</p>
+  <p style="text-align: center;">Already have an account? <a routerLink="/login">Login</a></p>
+</ion-content>

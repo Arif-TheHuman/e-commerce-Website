@@ -17,5 +17,16 @@
     <h2>{{product.name}}</h2>
     <p>${{product.price}}</p>
     <p>{{product.description}}</p>
+    <ion-button (click)="addToCart(product, quantity)">Add to Cart</ion-button>
+    <div *ngIf="quantity > 0">
+      <ion-button (click)="decreaseQuantity()">-</ion-button>
+      <span>{{quantity}}</span>
+      <ion-button (click)="increaseQuantity()">+</ion-button>
+    </div>
   </div>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button expand="full" (click)="confirmPurchase(product)">Confirm Purchase</ion-button>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>

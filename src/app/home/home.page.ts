@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../product-service.service';
 import { Router } from '@angular/router';
+import { CartService } from '../cart.service'; 
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(private productService: ProductService, private router: Router, public cartService: CartService) {}
 
   get productOfTheDay() {
     return this.productService.productOfTheDay;

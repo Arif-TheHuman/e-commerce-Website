@@ -4,6 +4,13 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title size="large" class="ion-text-center large-font">PB Hub</ion-title>
+    <ion-buttons slot="end">
+      <a routerLink="/cart"><ion-icon slot="icon-only" name="cart"></ion-icon></a>
+      <ion-icon slot="icon-only" name="cart"></ion-icon>
+      <ion-button routerLink="/cart">
+        <ion-badge>{{cartService.getItems().length}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

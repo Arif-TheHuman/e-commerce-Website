@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of cartService.getItems()">
+      <ion-label>
+        <h2>{{item.name}}</h2>
+        <p>${{item.price}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="cartService.clearCart()">Clear Cart</ion-button>
+</ion-content>
