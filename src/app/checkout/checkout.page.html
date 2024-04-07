@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/cart"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-label>Cost: ${{totalCost}} </ion-label>
+  <form (ngSubmit)="submitImage()">
+    <ion-item>
+      <ion-input type="file" [(ngModel)]="image" name="image"></ion-input>
+      <ion-label>Send Money to this Bank Account To purchase your product</ion-label>
+      <ion-label>Account: 12345678</ion-label>
+    </ion-item>
+    <ion-button type="submit">Submit</ion-button>
+  </form>
+  <ion-spinner *ngIf="isLoading"></ion-spinner>
+  <p *ngIf="orderConfirmed">Your basket number is 49. You can pick it up at this location.</p>
+  <ion-button *ngIf="!isLoading" routerLink="/home">Proceed</ion-button>
+</ion-content>

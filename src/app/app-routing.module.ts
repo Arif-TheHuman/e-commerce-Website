@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'product-change/:id',
     component: ProductChangePage
   },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
+  },
 ];
 
 @NgModule({

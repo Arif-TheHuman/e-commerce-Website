@@ -12,6 +12,10 @@ export class CartService {
     }
   }
 
+  getTotalCost() {
+    return this.items.reduce((total, item) => total + item.price, 0);
+  }
+
   getItems() {
     return this.items;
   }

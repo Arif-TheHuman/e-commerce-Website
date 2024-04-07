@@ -141,6 +141,25 @@
     </ion-grid>
   </ion-card-content>
 </ion-card>
+<ion-card *ngIf="businessProfile">
+  <ion-card-header>
+    <ion-card-title>Rent A Cube</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <img src="{{cubeImage}}" alt="">
+    <form (ngSubmit)="rentCube()">
+      <ion-item>
+        <ion-label>Cube Number</ion-label>
+        <ion-input type="text" [(ngModel)]="cube.number" name="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Time Length (hours)</ion-label>
+        <ion-input type="number" [(ngModel)]="cube.timeLength" name="timeLength"></ion-input>
+      </ion-item>
+      <ion-button type="submit">Rent Cube</ion-button>
+    </form>
+  </ion-card-content>
+</ion-card>
       </ion-grid>
     </ion-card-content>
   </ion-card>
