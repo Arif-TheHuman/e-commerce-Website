@@ -25,3 +25,55 @@
 #container a {
   text-decoration: none;
 }
+.product-list {
+  padding: 16px;
+}
+
+.product-list-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.product-card {
+  display: inline-block;
+  margin-right: 16px;
+  flex: 0 0 auto;  // This line ensures that the cards don't shrink and cause overflow
+  width: 200px;  // Adjust this value as needed
+  scroll-snap-align: start;
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.product-price {
+  color: #888;
+}
+
+.add-to-cart-button {
+  margin-left: auto;
+}
+
+.scroll-container {
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+
+  @media (max-width: 600px) {  // 600px is a common breakpoint for mobile devices
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    &::-webkit-scrollbar { 
+      display: none; /* For Chrome, Safari and Opera */
+    }
+  }
+}
