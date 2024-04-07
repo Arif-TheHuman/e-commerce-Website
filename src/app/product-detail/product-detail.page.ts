@@ -14,6 +14,12 @@ export class ProductDetailPage implements OnInit {
 
   ngOnInit() {
     const productId = this.route.snapshot.paramMap.get('id') ?? '';
-    this.product = this.productService.getProductById(productId);
+    const section = this.route.snapshot.paramMap.get('section') ?? '';
+    
+    if (section === 'popular') {
+      this.product = this.productService.getProductByIdPopular(productId);
+    } else if (section === 'trending') {
+      this.product = this.productService.getProductByIdTrending(productId);
+    }
   }
 }

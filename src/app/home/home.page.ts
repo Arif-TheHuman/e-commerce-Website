@@ -10,11 +10,18 @@ import { Router } from '@angular/router';
 export class HomePage {
   constructor(private productService: ProductService, private router: Router) {}
 
+  get productOfTheDay() {
+    return this.productService.productOfTheDay;
+  }
+
   get product_Popular() {
     return this.productService.product_Popular;
   }
+  get Product_Trending() {
+    return this.productService.product_Trending;
+  }
 
-  openProductDetails(product: any) {
-    this.router.navigate(['/product-detail', product.id]);
+  openProductDetails(product: any, section: string) {
+    this.router.navigate(['/product-detail', product.id, section]);
   }
 }
