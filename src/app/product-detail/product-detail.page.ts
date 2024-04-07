@@ -28,9 +28,14 @@ export class ProductDetailPage implements OnInit {
     }
   }
 
-  addToCart(product: any, quantity: number) { // Add this method
-    this.cartService.addToCart(product, quantity);
-    this.increaseQuantity();
+  addToCart(product: any, quantity: number) {
+    if (product.stock >= quantity) {
+      this.cartService.addToCart(product, quantity);
+      product.stock -= quantity;
+      this.increaseQuantity();
+    } else {
+      alert('Not enough stock');
+    }
   }
 
   confirmPurchase(product: any) {
@@ -40,7 +45,9 @@ export class ProductDetailPage implements OnInit {
   }
 
   increaseQuantity() {
-    this.quantity++;
+    if (this.quantity < this.product.stock) {
+      this.quantity++;
+    }
   }
 
   decreaseQuantity() {

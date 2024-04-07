@@ -17,7 +17,8 @@
     <h2>{{product.name}}</h2>
     <p>${{product.price}}</p>
     <p>{{product.description}}</p>
-    <ion-button (click)="addToCart(product, quantity)">Add to Cart</ion-button>
+    <p>Stock: {{product.stock}}</p>
+    <ion-button (click)="addToCart(product, quantity)" [disabled]="product.stock === 0">Add to Cart</ion-button>
     <div *ngIf="quantity > 0">
       <ion-button (click)="decreaseQuantity()">-</ion-button>
       <span>{{quantity}}</span>

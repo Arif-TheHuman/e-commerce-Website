@@ -20,6 +20,21 @@
     <ion-button expand="full" (click)="setAccountType('Seller')">Seller</ion-button>
     <ion-button expand="full" (click)="setAccountType('Customer')">Customer</ion-button>
   </div>
+  <form *ngIf="accountType === 'Seller'" (ngSubmit)="submitBusinessProfile()" style="padding: 20px;">
+    <ion-item>
+      <ion-label>Business Name</ion-label>
+      <ion-input type="text" [formControl]="businessName" name="businessName" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contact Details</ion-label>
+      <ion-input type="text" [formControl]="contactDetails" name="contactDetails" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Business Description</ion-label>
+      <ion-textarea [formControl]="businessDescription" name="businessDescription" required></ion-textarea>
+    </ion-item>
+    <ion-button expand="full" type="submit" [disabled]="!businessName.valid || !contactDetails.valid || !businessDescription.valid">Submit Business Profile</ion-button>
+  </form>
   <p *ngIf="errorMessage" style="color: red; text-align: center;">{{errorMessage}}</p>
   <p style="text-align: center;">Already have an account? <a routerLink="/login">Login</a></p>
 </ion-content>

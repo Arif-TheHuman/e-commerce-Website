@@ -11,6 +11,9 @@ import { FormControl, Validators } from '@angular/forms';
 export class SignupPage {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', Validators.required);
+  businessName = new FormControl('', Validators.required);
+  contactDetails = new FormControl('', Validators.required);
+  businessDescription = new FormControl('', Validators.required);
   accountType: string = '';
   errorMessage: string = '';
   showAccountTypeButtons: boolean = false;
@@ -34,9 +37,30 @@ export class SignupPage {
     if (type) {
       this.accountType = type;
       this.authService.setAccountType(type);
-      this.router.navigateByUrl('/home');
     } else {
       this.errorMessage = 'Account type is required.';
+    }
+  }
+
+  submitBusinessProfile() {
+    if (this.businessName.valid && this.contactDetails.valid && this.businessDescription.valid) {
+      const businessProfile = {
+        businessName: this.businessName.value,
+        contactDetails: this.contactDetails.value,
+        businessDescription: this.businessDescription.value
+      };
+    
+      this.authService.setBusinessProfile(businessProfile);
+  
+      // Reset the form
+      this.businessName.reset();
+      this.contactDetails.reset();
+      this.businessDescription.reset();
+  
+      // Navigate to the home page
+      this.router.navigateByUrl('/home');
+    } else {
+      this.errorMessage = 'Please fill out the form correctly.';
     }
   }
 }
