@@ -20,6 +20,8 @@ export class ProductDetailPage implements OnInit {
       this.product = this.productService.getProductByIdPopular(productId);
     } else if (section === 'trending') {
       this.product = this.productService.getProductByIdTrending(productId);
+    } else if (section === 'productOfTheDay') {
+      this.product = this.productService.productOfTheDay.find(product => product.id === productId);
     }
   }
 }

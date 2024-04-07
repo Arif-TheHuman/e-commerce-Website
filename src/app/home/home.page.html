@@ -11,9 +11,15 @@
   <div class="product-list">
     <div>
       <ion-label class="product-list-title padding center" color="danger">Product Of The Day</ion-label>
-      <ion-card class="productOfTheDay">
+      <ion-card class="productOfTheDay" (click)="openProductDetails(productOfTheDay[0], 'productOfTheDay')">
         <img [src]="productOfTheDay[0].image" alt="{{productOfTheDay[0].name}}">
       </ion-card>
+      <ion-label class="product-list-title padding center" color="danger">
+        <h2 class="product-name">{{productOfTheDay[0].name}}</h2>
+      </ion-label>
+      <ion-label class="product-list-title padding center" color="danger">
+        <p class="product-name">${{productOfTheDay[0].price}}</p>
+      </ion-label>
     </div>
     <br>
     <ion-label class="product-list-title padding">Popular</ion-label>
