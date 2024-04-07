@@ -135,4 +135,8 @@ export class DashboardPage implements OnInit, DoCheck {
     // Reset the form
     this.cube = { number: '', timeLength: 0 };
   }
+
+  navigateToReviews() {
+    this.router.navigate(['/check-reviews']);
+  }
 }

@@ -95,10 +95,11 @@
   </ion-card-header>
   <ion-card-content>
     <ion-list>
-      <ion-item *ngFor="let review of reviews">
+      <ion-item *ngFor="let review of reviews | slice:0:2">
         <ion-label>{{ review.productName }} - {{ review.rating }}</ion-label>
         <p>{{ review.comment }}</p>
       </ion-item>
+      <ion-button (click)="navigateToReviews()">View All Reviews</ion-button>
     </ion-list>
   </ion-card-content>
 </ion-card>
