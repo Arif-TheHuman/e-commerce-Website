@@ -27,6 +27,9 @@
       <ion-label class="product-list-title padding center" color="danger">
         <p class="product-name">${{productOfTheDay[0].price}}</p>
       </ion-label>
+      <ion-label>
+        <p class="product-name padding center"><ion-icon name="star" *ngFor="let i of [].constructor(productOfTheDay[0].rating)"></ion-icon></p>
+      </ion-label>
     </div>
     <br>
     <ion-label class="product-list-title padding">Popular</ion-label>
@@ -37,6 +40,7 @@
           <ion-label>
             <h2 class="product-name">{{product.name}}</h2>
             <p class="product-price">${{product.price}}</p>
+            <p><ion-icon name="star" *ngFor="let i of [].constructor(product.rating)"></ion-icon></p>
           </ion-label>
         </ion-card>
       </div>
@@ -49,6 +53,7 @@
           <ion-label>
             <h2 class="product-name">{{product.name}}</h2>
             <p class="product-price">${{product.price}}</p>
+            <p><ion-icon name="star" *ngFor="let i of [].constructor(product.rating)"></ion-icon></p>
           </ion-label>
         </ion-card>
       </div>

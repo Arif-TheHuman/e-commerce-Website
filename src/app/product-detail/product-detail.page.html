@@ -18,6 +18,7 @@
     <p>${{product.price}}</p>
     <p>{{product.description}}</p>
     <p>Stock: {{product.stock}}</p>
+    <p>Rating: <ion-icon name="star" *ngFor="let i of [].constructor(product.rating)"></ion-icon></p>
     <ion-button (click)="addToCart(product, quantity)" [disabled]="product.stock === 0">Add to Cart</ion-button>
     <div *ngIf="quantity > 0">
       <ion-button (click)="decreaseQuantity()">-</ion-button>

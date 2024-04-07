@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { CartPage } from './cart/cart.page';
+import { DashboardPage } from './dashboard/dashboard.page';
+import { ProductChangePage } from './product-change/product-change.page';
 
 const routes: Routes = [
   {
@@ -36,12 +38,26 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
+  {
+    path: 'performance',
+    loadChildren: () => import('./performance/performance.module').then( m => m.PerformancePageModule)
+  },
+  {
+    path: 'product-change',
+    loadChildren: () => import('./product-change/product-change.module').then( m => m.ProductChangePageModule)
+  },
+  {
+    path: 'dashboard',
+    component: DashboardPage
+  },
+  {
+    path: 'product-change/:id',
+    component: ProductChangePage
+  },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

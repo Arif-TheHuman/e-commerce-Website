@@ -47,6 +47,11 @@ export class AuthService {
     return Promise.resolve(this.loggedInUser);
   }
 
+  logout() {
+    this.loggedInUser = null;
+    this.businessProfile = null;
+  }
+
   login(email: string, password: string): Promise<string> {
     return new Promise((resolve) => {
       if (this.users.some(user => user.email === email && user.password === password)) {

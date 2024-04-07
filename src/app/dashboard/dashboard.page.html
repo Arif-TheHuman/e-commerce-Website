@@ -4,34 +4,145 @@
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title size="large">Dashboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-header>
       <ion-card-subtitle>Welcome to your dashboard</ion-card-subtitle>
     </ion-card-header>
+
     <ion-card-content>
       <ion-grid>
-        <ion-row>
-          <ion-col size="3">
+        <!-- Avatar -->
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col size="12" class="ion-text-center">
             <ion-avatar>
               <ion-img src="https://via.placeholder.com/150"></ion-img>
             </ion-avatar>
           </ion-col>
-          <ion-col size="9">
-            <div *ngIf="user">
-              <p><strong>Email:</strong> {{ user.email }}</p>
-              <p><strong>Account Type:</strong> {{ user.accountType }}</p>
-            </div>
-            <div *ngIf="businessProfile">
-              <p><strong>Business Name:</strong> {{ businessProfile.businessName }}</p>
-              <p><strong>Contact Details:</strong> {{ businessProfile.contactDetails }}</p>
-              <p><strong>Business Description:</strong> {{ businessProfile.businessDescription }}</p>
-            </div>
+        </ion-row>
+
+        <!-- User Info -->
+        <ion-row *ngIf="user" class="ion-justify-content-center">
+          <ion-col size="12" class="ion-text-center">
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Account Type:</strong> {{ user.accountType }}</p>
           </ion-col>
         </ion-row>
+
+        <!-- Business Profile -->
+        <ion-row *ngIf="businessProfile" class="ion-justify-content-center">
+          <ion-col size="12" class="ion-text-center">
+            <p><strong>Business Name:</strong> {{ businessProfile.businessName }}</p>
+            <p><strong>Contact Details:</strong> {{ businessProfile.contactDetails }}</p>
+            <p><strong>Business Description:</strong> {{ businessProfile.businessDescription }}</p>
+            <ion-button *ngIf="user.accountType === 'Seller' && !isEditing" (click)="editBusinessProfile()">Edit</ion-button>
+          </ion-col>
+        </ion-row>
+
+        <!-- Edit Business Profile Form -->
+        <ion-row *ngIf="isEditing" class="ion-justify-content-center">
+          <ion-col size="12">
+            <form (ngSubmit)="submitBusinessProfile()">
+              <ion-item>
+                <ion-label>Business Name</ion-label>
+                <ion-input [(ngModel)]="businessProfile.businessName" name="businessName"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Contact Details</ion-label>
+                <ion-input [(ngModel)]="businessProfile.contactDetails" name="contactDetails"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Business Description</ion-label>
+                <ion-input [(ngModel)]="businessProfile.businessDescription" name="businessDescription"></ion-input>
+              </ion-item>
+              <ion-button type="submit">Submit</ion-button>
+            </form>
+          </ion-col>
+        </ion-row>
+
+        <ion-button *ngIf="businessProfile" expand="full" (click)="navigateToPerformance()">Performance</ion-button>
+        
+<ion-card *ngIf="businessProfile">
+  <ion-card-header>
+    <ion-card-title>Your Products</ion-card-title>
+  </ion-card-header>
+  <ion-card-content class="card-content">
+    <ion-list>
+      <ion-item *ngFor="let product of products" (click)="editProduct(product)">
+        <ion-thumbnail slot="start">
+          <img class="product-image" [src]="product.image" alt="{{ product.name }}">
+        </ion-thumbnail>
+        <div class="product-info">
+          <ion-card-subtitle class="product-text">{{ product.name }}<br></ion-card-subtitle>
+          <ion-label class="product-text">${{ product.price }}<br></ion-label>
+          <ion-label class="product-text">{{ product.stock }}<br></ion-label>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+<ion-card *ngIf="businessProfile">
+  <ion-card-header>
+    <ion-card-title>Reviews</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let review of reviews">
+        <ion-label>{{ review.productName }} - {{ review.rating }}</ion-label>
+        <p>{{ review.comment }}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+<ion-card *ngIf="businessProfile">
+  <ion-card-header>
+    <ion-card-title>Add Product</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="6">
+          <ion-item class="image-upload">
+            <input type="file" (change)="onFileChange($event)" />
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="6">
+          <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input type="text" [(ngModel)]="newProduct.name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-input type="text" [(ngModel)]="newProduct.description"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Price</ion-label>
+            <ion-input type="number" [(ngModel)]="newProduct.price"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Stock</ion-label>
+            <ion-input type="number" [(ngModel)]="newProduct.stock"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="addProduct()">Add Product</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
       </ion-grid>
     </ion-card-content>
   </ion-card>
+
 </ion-content>

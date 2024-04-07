@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Performance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Performance</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Statistics</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <table class="ion-table">
+        <thead>
+          <tr>
+            <th (click)="changeSort('name')">Name</th>
+            <th (click)="changeSort('value')">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stat of statistics">
+            <td>{{ stat.name }}</td>
+            <td>{{ stat.value }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
