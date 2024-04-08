@@ -1,7 +1,10 @@
 <ion-menu side="start" menuId="first" contentId="main-content">
   <ion-header>
-    <div style="display: flex; align-items: center; padding: 1em;">
-      <ion-avatar style="margin-right: 15px;">
+    <ion-toolbar color="primary">
+      <ion-title>User Profile</ion-title>
+    </ion-toolbar>
+    <div class="profile-info">
+      <ion-avatar>
         <ion-img src="https://via.placeholder.com/150"></ion-img>
       </ion-avatar>
       <div *ngIf="user">

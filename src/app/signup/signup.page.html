@@ -1,40 +1,40 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title class="ion-text-center">Sign in</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <form (ngSubmit)="signup()" style="padding: 20px;">
-    <ion-item>
-      <ion-label>Email</ion-label>
+<ion-content padding>
+  <form (ngSubmit)="signup()">
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
       <ion-input type="email" [formControl]="email" name="email" required></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Password</ion-label>
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
       <ion-input type="password" [formControl]="password" name="password" required></ion-input>
     </ion-item>
-    <ion-button expand="full" type="submit" [disabled]="!email.valid || !password.valid">Sign in</ion-button>
+    <ion-button expand="full" type="submit" [disabled]="!email.valid || !password.valid" color="primary">Sign in</ion-button>
   </form>
-  <div *ngIf="showAccountTypeButtons" style="padding: 20px;">
+  <div *ngIf="showAccountTypeButtons">
     <ion-label>Choose your account type</ion-label>
-    <ion-button expand="full" (click)="setAccountType('Seller')">Seller</ion-button>
-    <ion-button expand="full" (click)="setAccountType('Customer')">Customer</ion-button>
+    <ion-button expand="full" (click)="setAccountType('Seller')" color="primary">Seller</ion-button>
+    <ion-button expand="full" (click)="setAccountType('Customer')" color="primary">Customer</ion-button>
   </div>
-  <form *ngIf="accountType === 'Seller'" (ngSubmit)="submitBusinessProfile()" style="padding: 20px;">
-    <ion-item>
-      <ion-label>Business Name</ion-label>
+  <form *ngIf="accountType === 'Seller'" (ngSubmit)="submitBusinessProfile()">
+    <ion-item lines="full">
+      <ion-label position="floating">Business Name</ion-label>
       <ion-input type="text" [formControl]="businessName" name="businessName" required></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Contact Details</ion-label>
+    <ion-item lines="full">
+      <ion-label position="floating">Contact Details</ion-label>
       <ion-input type="text" [formControl]="contactDetails" name="contactDetails" required></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Business Description</ion-label>
+    <ion-item lines="full">
+      <ion-label position="floating">Business Description</ion-label>
       <ion-textarea [formControl]="businessDescription" name="businessDescription" required></ion-textarea>
     </ion-item>
-    <ion-button expand="full" type="submit" [disabled]="!businessName.valid || !contactDetails.valid || !businessDescription.valid">Submit Business Profile</ion-button>
+    <ion-button expand="full" type="submit" [disabled]="!businessName.valid || !contactDetails.valid || !businessDescription.valid" color="primary">Submit Business Profile</ion-button>
   </form>
-  <p *ngIf="errorMessage" style="color: red; text-align: center;">{{errorMessage}}</p>
-  <p style="text-align: center;">Already have an account? <a routerLink="/login">Login</a></p>
+  <p *ngIf="errorMessage" class="error-message">{{errorMessage}}</p>
+  <p class="center-text">Already have an account? <a routerLink="/login">Login</a></p>
 </ion-content>

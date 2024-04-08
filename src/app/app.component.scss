@@ -1,0 +1,14 @@
+ion-toolbar {
+    --background: #3880ff;
+    --color: white;
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+  }
+  
+  ion-avatar {
+    margin-right: 15px;
+  }

@@ -1,17 +1,23 @@
 .ion-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .ion-table th, .ion-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .ion-table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-  }
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ion-table th, .ion-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.ion-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #3880ff;
+  color: white;
+  cursor: pointer;
+}
+
+ion-toolbar {
+--background: #3880ff;
+--color: white;
+}

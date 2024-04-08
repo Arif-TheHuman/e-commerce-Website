@@ -1,34 +1,39 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>{{product.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
+    <ion-toolbar color="primary">
       <ion-title size="large">{{product.name}}</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div>
+
+  <ion-card>
     <img [src]="product.image" alt="{{product.name}}"/>
-    <h2>{{product.name}}</h2>
-    <p>${{product.price}}</p>
-    <p>{{product.description}}</p>
-    <p>Stock: {{product.stock}}</p>
-    <p>Rating: <ion-icon name="star" *ngFor="let i of [].constructor(product.rating)"></ion-icon></p>
-    <ion-button (click)="addToCart(product, quantity)" [disabled]="product.stock === 0">Add to Cart</ion-button>
-    <div *ngIf="quantity > 0">
-      <ion-button (click)="decreaseQuantity()">-</ion-button>
-      <span>{{quantity}}</span>
-      <ion-button (click)="increaseQuantity()">+</ion-button>
-    </div>
-  </div>
+    <ion-card-content>
+      <h2>{{product.name}}</h2>
+      <p>${{product.price}}</p>
+      <p>{{product.description}}</p>
+      <p>Stock: {{product.stock}}</p>
+      <p>Rating: <ion-icon name="star" *ngFor="let i of [].constructor(product.rating)"></ion-icon></p>
+      <ion-button (click)="addToCart(product, quantity)" [disabled]="product.stock === 0">Add to Cart</ion-button>
+      <div *ngIf="quantity > 0">
+        <ion-button (click)="decreaseQuantity()">-</ion-button>
+        <span>{{quantity}}</span>
+        <ion-button (click)="increaseQuantity()">+</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
   <ion-footer>
     <ion-toolbar>
-      <ion-button expand="full" (click)="confirmPurchase(product)">Confirm Purchase</ion-button>
+      <ion-button expand="full" color="primary" (click)="confirmPurchase(product)">Confirm Purchase</ion-button>
     </ion-toolbar>
   </ion-footer>
 </ion-content>
