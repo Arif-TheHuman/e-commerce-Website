@@ -1,0 +1,8 @@
+{
+    "appId": "com.AlertDetectorApp",
+    "appName": "AlertDetectorApp",
+    "bundleWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "www",
+    "cordova": {}
+}
