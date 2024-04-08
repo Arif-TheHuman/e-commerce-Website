@@ -30,6 +30,12 @@ ion-label {
   border-radius: 5px;
 }
 
+.full-width-avatar {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
 .product-info {
   display: flex;
   justify-content: space-between;
@@ -52,4 +58,8 @@ ion-label {
 
 ion-button {
   margin-top: 10px;
+}
+
+.product-stock {
+  margin-left: 10px;
 }

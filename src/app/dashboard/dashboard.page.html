@@ -23,7 +23,7 @@
         <!-- Avatar -->
         <ion-row class="ion-justify-content-center ion-align-items-center">
           <ion-col size="12" class="ion-text-center">
-            <ion-avatar>
+            <ion-avatar class="full-width-avatar">
               <ion-img src="https://via.placeholder.com/150"></ion-img>
             </ion-avatar>
           </ion-col>
@@ -82,8 +82,8 @@
         </ion-thumbnail>
         <div class="product-info">
           <ion-card-subtitle class="product-text">{{ product.name }}<br></ion-card-subtitle>
-          <ion-label class="product-text">${{ product.price }}<br></ion-label>
-          <ion-label class="product-text">{{ product.stock }}<br></ion-label>
+          <ion-label class="product-text">${{ product.price }}</ion-label>
+          <ion-label class="product-text product-stock">QTY {{ product.stock }}</ion-label>
         </div>
       </ion-item>
     </ion-list>
@@ -147,7 +147,7 @@
     <ion-card-title>Rent A Cube</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <img src="{{cubeImage}}" alt="">
+    <img src="{{cubeImage}}" alt="" class="full-width-avatar">
     <form (ngSubmit)="rentCube()">
       <ion-item>
         <ion-label>Cube Number</ion-label>
