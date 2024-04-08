@@ -24,7 +24,7 @@
         <ion-row class="ion-justify-content-center ion-align-items-center">
           <ion-col size="12" class="ion-text-center">
             <ion-avatar class="full-width-avatar">
-              <ion-img src="https://via.placeholder.com/150"></ion-img>
+              <ion-img src="../../assets/img/item4.jpg"></ion-img>
             </ion-avatar>
           </ion-col>
         </ion-row>
@@ -147,14 +147,14 @@
     <ion-card-title>Rent A Cube</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <img src="{{cubeImage}}" alt="" class="full-width-avatar">
+    <img [src]="cubeImage" alt="" class="full-width-avatar">
     <form (ngSubmit)="rentCube()">
       <ion-item>
         <ion-label>Cube Number</ion-label>
         <ion-input type="text" [(ngModel)]="cube.number" name="number"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Time Length (hours)</ion-label>
+        <ion-label>Time Length (day)</ion-label>
         <ion-input type="number" [(ngModel)]="cube.timeLength" name="timeLength"></ion-input>
       </ion-item>
       <ion-button type="submit">Rent Cube</ion-button>
